@@ -42,12 +42,9 @@ retry.monitor(runner)
 代码稳定的时间，代码执行成功时，需要调用success()函数，来通知just-retry调用成功。这时，假如代码在steadyTime的时间间隔内，都没有调用error(), 则just-retry会重置错误状态，错误的次数被重置为0。
 steadyTime默认为5000
 
-### runner
-所要监控的代码，runner的参数是一个just-retry的实例。通过这个实例，在runner里面，可以调用success,及error， 来告诉just-retry是成功还是出错。
-
 # api
-## monitor()
-开始监控代码。执行后，runner代码会被执行。
+## monitor(runner)
+开始监控代码。执行后，runner代码会被执行。runner需要是一个函数。
 
 ## succuss()
 成功，需要在代码执行成功的时候进行调用。
