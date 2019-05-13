@@ -2,8 +2,7 @@ class TryAgain {
   constructor (config = {}) {
     this._config = Object.assign({
       delays: [],
-      steadyTime: 5000,
-      runner: () => {}
+      steadyTime: 5000
     }, config)
     this._checkConfig()
     this._parseDelays()
@@ -24,9 +23,11 @@ class TryAgain {
     }
     this.status = this.statusEnums.RESUME
     this.bufferRetrys = []
+    this.runner = () => {}
   }
-  monitor () {
-    this._config.runner(this)
+  monitor (func) {
+    this.runner = func
+    this._run()
   }
   // error, success, retry, reset, all
   on (event, callback) {
@@ -60,6 +61,9 @@ class TryAgain {
       this._retry()
     }
   }
+  _run () {
+    this.runner(this)
+  }
   _emit (event, data) {
     let callbacks = this.callbackMap[event]
     if (callbacks) {
@@ -81,7 +85,7 @@ class TryAgain {
     let retryTimes = this.retryTimeStamps.length
     let delay = this._getDelay(retryTimes)
     if (delay === false) return this._fail()
-    setTimeout(() => this.monitor(), delay)
+    setTimeout(() => this._run(), delay)
   }
   _reset () {
     this._emit(this.eventEnums.RESET)
@@ -133,8 +137,7 @@ class TryAgain {
         }
         return true
       },
-      steadyTime: (steadyTime) => /^\d+$/.test(steadyTime),
-      runner: (monitor) => monitor instanceof Function
+      steadyTime: (steadyTime) => /^\d+$/.test(steadyTime)
     }
     let keys = Object.keys(constrains)
     let errorKeys = []

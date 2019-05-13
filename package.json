@@ -1,5 +1,5 @@
 {
-  "name": "try-again",
+  "name": "just-retry",
   "version": "0.0.1",
   "description": "retry according to the configured strategy",
   "main": "lib/index",
@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awayisblue/node-try-again.git"
+    "url": "git+https://github.com/awayisblue/node-just-retry.git"
   },
   "keywords": [
-    "node-try-again",
-    "try-again",
+    "node-just-retry",
+    "just-retry",
     "retry"
   ],
   "author": "awayisblue <awayisblue@qq.com> (https://github.com/awayisblue)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/awayisblue/node-try-again/issues"
+    "url": "https://github.com/awayisblue/node-just-retry/issues"
   },
-  "homepage": "https://github.com/awayisblue/node-try-again#readme",
+  "homepage": "https://github.com/awayisblue/node-just-retry#readme",
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-preset-es2015": "^6.22.0",
