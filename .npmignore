@@ -1,0 +1,6 @@
+examples/
+.babelrc
+docs
+test
+.idea
+*.test.js

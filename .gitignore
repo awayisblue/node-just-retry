@@ -1,0 +1,10 @@
+# Logs
+lib
+logs
+*.log
+# package
+node_modules/
+.env
+# IDE
+.idea
+.DS_Store
