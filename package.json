@@ -1,6 +1,6 @@
 {
   "name": "just-retry",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "retry according to the configured strategy",
   "main": "lib/index",
   "scripts": {
@@ -37,5 +37,8 @@
     "jest": "^21.2.1",
     "nodemon": "^1.12.5",
     "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "just-retry": "^0.0.2"
   }
 }

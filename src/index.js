@@ -48,8 +48,8 @@ class TryAgain {
     }
   }
   success () {
-    this._emit(this.eventEnums.SUCCESS)
     this.resetHandler = setTimeout(() => this._reset(), this._config.steadyTime)
+    this._emit(this.eventEnums.SUCCESS)
   }
   stop () {
     this.status = this.statusEnums.STOP
@@ -79,17 +79,17 @@ class TryAgain {
     }
   }
   _retry () {
-    this._emit(this.eventEnums.RETRY)
     let time = this._getNowTime()
     this.retryTimeStamps.push(time)
     let retryTimes = this.retryTimeStamps.length
     let delay = this._getDelay(retryTimes)
     if (delay === false) return this._fail()
     setTimeout(() => this._run(), delay)
+    this._emit(this.eventEnums.RETRY)
   }
   _reset () {
-    this._emit(this.eventEnums.RESET)
     this.retryTimeStamps = []
+    this._emit(this.eventEnums.RESET)
   }
   _fail () {
     this._emit(this.eventEnums.FAIL)
@@ -131,7 +131,7 @@ class TryAgain {
       delays: (delays) => {
         if (!(delays instanceof Array)) return false
         for (let item of delays) {
-          if (!/^\d+(x[\d+|~])?$/.test(item)) {
+          if (!/^\d+(x\d+|x~)?$/.test(item)) {
             return false
           }
         }
